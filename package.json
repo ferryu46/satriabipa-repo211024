@@ -1,7 +1,7 @@
 {
-  "name": "chatbot",
+  "name": "satriabipa",
   "version": "1.0.0",
-  "description": "",
+  "description": "chatbot satriabipa",
   "main": "index.js",
   "scripts": {
     "build": "tailwindcss -i ./src/styles.css -o ./dist/output.css --watch",
@@ -9,7 +9,7 @@
     "start": "node index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ferry Yun Kurniawan",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer": "^10.4.20",
