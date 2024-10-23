@@ -7,6 +7,18 @@
 	</script>
 
     <script>
+        function checkDark() {
+			const theme = localStorage.getItem('theme');
+			const checkbox = document.getElementById('darkModeToggle');
+
+			if (theme === 'dark') {
+			document.documentElement.classList.add('dark');
+			if(checkbox) checkbox.checked = true;
+			} else {
+			document.documentElement.classList.remove('dark');
+			if(checkbox) checkbox.checked = false;
+			}
+		};
         function toggleMode() {
 			const isDarkMode = document.documentElement.classList.toggle('dark');
 			
@@ -18,18 +30,11 @@
 		}
 
 		// On page load, apply the saved theme from localStorage and sync the toggle
-		window.onload = function() {
-			const theme = localStorage.getItem('theme');
+		window.onload = () => {
+			checkDark();
 			const checkbox = document.getElementById('darkModeToggle');
-
-			if (theme === 'dark') {
-			document.documentElement.classList.add('dark');
-			checkbox.checked = true;  // Set the toggle to "checked" for dark mode
-			} else {
-			document.documentElement.classList.remove('dark');
-			checkbox.checked = false;  // Set the toggle to "unchecked" for light mode
-			}
-		};
+			if(checkbox) checkbox.checked = document.documentElement.classList.contains('dark');
+		}; 
     </script>
 
     <nav class="w-full bg-white  dark:bg-gray-900 fixed z-20 top-0 start-0">
@@ -62,10 +67,10 @@
                             <a href="/index#beranda" class="flex w-full items-center justify-end py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-8 hover:duration-75">Beranda</a>
                         </li>
                         <li>
-                            <a href="#fitur" class="flex w-full items-center justify-end py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-8 hover:duration-75">Fitur</a>
+                            <a href="/index#fitur" class="flex w-full items-center justify-end py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-8 hover:duration-75">Fitur</a>
                         </li>
                         <li>
-                            <a href="#panduan" class="flex w-full items-center justify-end py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-8 hover:duration-75">Panduan</a>
+                            <a href="/index#panduan" class="flex w-full items-center justify-end py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-8 hover:duration-75">Panduan</a>
                         </li>
                     </ul>
                     <div class="flex flex-row gap-x-4 pt-4 md:pt-0 h-full w-full items-center justify-end md:justify-center">
