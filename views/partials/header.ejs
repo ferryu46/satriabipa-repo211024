@@ -1,4 +1,37 @@
 <header class="sticky top-0 bg-white dark:bg-[#1B1B21] z-30 ">
+
+    <script>
+		tailwind.config = {
+			darkMode: "class",
+		}
+	</script>
+
+    <script>
+        function toggleMode() {
+			const isDarkMode = document.documentElement.classList.toggle('dark');
+			
+			// Update localStorage with the user's preference
+			localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+			// Also update the checkbox based on the mode
+			document.getElementById('darkModeToggle').checked = isDarkMode;
+		}
+
+		// On page load, apply the saved theme from localStorage and sync the toggle
+		window.onload = function() {
+			const theme = localStorage.getItem('theme');
+			const checkbox = document.getElementById('darkModeToggle');
+
+			if (theme === 'dark') {
+			document.documentElement.classList.add('dark');
+			checkbox.checked = true;  // Set the toggle to "checked" for dark mode
+			} else {
+			document.documentElement.classList.remove('dark');
+			checkbox.checked = false;  // Set the toggle to "unchecked" for light mode
+			}
+		};
+    </script>
+
     <nav class="w-full bg-white  dark:bg-gray-900 fixed z-20 top-0 start-0">
         <div class="flex w-full mx-auto md:flex-row flex-col items-center justify-between">
             <div class="hidden md:flex w-full items-center justify-start"><%- include('logo-header') %></div>
@@ -9,7 +42,7 @@
                         <!-- Toggle Dark Mode -->
                         <div class="items-center hidden md:flex">
                             <label class="flex items-center">
-                                <input type="checkbox" value="" class="sr-only peer" onclick="toggleMode()">
+                                <input type="checkbox" value="" id="darkModeToggle" class="sr-only peer" onclick="toggleMode()">
                                 <div class="relative flex items-center justify-center mx-3 w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[' '] dark:after:content-[' '] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                             </label>
                         </div>
@@ -38,7 +71,7 @@
                     <div class="flex flex-row gap-x-4 pt-4 md:pt-0 h-full w-full items-center justify-end md:justify-center">
                         <div class="flex items-center">
                             <label class="flex items-center">
-                                <input type="checkbox" value="" class="sr-only peer" onclick="toggleMode()">
+                                <input type="checkbox" value="" id="darkModeToggle" class="sr-only peer" onclick="toggleMode()">
                                 <div class="relative mx-3 w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[' '] dark:after:content-[' '] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
                             </label>
                         </div>

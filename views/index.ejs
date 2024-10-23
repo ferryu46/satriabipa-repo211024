@@ -19,27 +19,41 @@
 			darkMode: "class",
 		}
 	</script>
+	
 	<script>
 		// Function to initialize and toggle dark mode
-		function initMode() {
-			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-				document.documentElement.classList.add('dark');
-			} else {
-				document.documentElement.classList.remove('dark');
-			}
+		// function initMode() {
+		// 	if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+		// 		document.documentElement.classList.add('dark');
+		// 	} else {
+		// 		document.documentElement.classList.remove('dark');
+		// 	}
+		// }
+
+		// Toggle between dark and light mode
+		function toggleMode() {
+			const isDarkMode = document.documentElement.classList.toggle('dark');
+			
+			// Update localStorage with the user's preference
+			localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+			// Also update the checkbox based on the mode
+			document.getElementById('darkModeToggle').checked = isDarkMode;
 		}
 
-		function toggleMode() {
-			if (document.documentElement.classList.contains('dark')) {
-				document.documentElement.classList.remove('dark');
-				localStorage.theme = 'light';
-				setActiveLink();
+		// On page load, apply the saved theme from localStorage and sync the toggle
+		window.onload = function() {
+			const theme = localStorage.getItem('theme');
+			const checkbox = document.getElementById('darkModeToggle');
+
+			if (theme === 'dark') {
+			document.documentElement.classList.add('dark');
+			checkbox.checked = true;  // Set the toggle to "checked" for dark mode
 			} else {
-				document.documentElement.classList.add('dark');
-				localStorage.theme = 'dark';
-				setActiveLink();
+			document.documentElement.classList.remove('dark');
+			checkbox.checked = false;  // Set the toggle to "unchecked" for light mode
 			}
-		}
+		};
 
 		document.addEventListener('DOMContentLoaded', function () {
 			const burgerMenu = document.getElementById('burger-menu');
@@ -197,7 +211,7 @@
 					<div class="w-full md:w-1/2 p-8 pt-0">
 						<div class="flex flex-col gap-y-4 w-full items-start justify-center px-4 md:px-0">
 							<div class="text-xl md:text-4xl font-extrabold text-white">Pelajari lebih lanjut</div>
-							<div class="text-sm md:text-xl text-neutral-100 font-semibold">Tonton video tutorial berikut
+							<div class="text-sm md:text-xl text-neutral-100 font-semibold">Tonton video panduan berikut
 								untuk menggunakan Satria BIPA</div>
                                 <a href="/login" class="flex flex-col items-center justify-center gap-y-8 py-4 rounded-xl w-full">
                                     <button onclick="location.href='/login'" class="px-4 py-3 rounded-xl bg-red-600 text-white flex w-full gap-x-2 items-center justify-center group">Mulai <span class="group-hover:translate-x-2 transition-all duration-300 ease-in-out">→</span></button>
