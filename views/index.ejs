@@ -9,51 +9,36 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
 		rel="stylesheet">
-	<script src="https://cdn.tailwindcss.com"></script>
+	<!-- <script src="https://cdn.tailwindcss.com"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="/public/assets/css/global.css" />
 
 	<script>
 		tailwind.config = {
 			darkMode: "class",
 		}
 	</script>
-	
 	<script>
 		// Function to initialize and toggle dark mode
-		// function initMode() {
-		// 	if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-		// 		document.documentElement.classList.add('dark');
-		// 	} else {
-		// 		document.documentElement.classList.remove('dark');
-		// 	}
-		// }
-
-		// Toggle between dark and light mode
-		function toggleMode() {
-			const isDarkMode = document.documentElement.classList.toggle('dark');
-			
-			// Update localStorage with the user's preference
-			localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-
-			// Also update the checkbox based on the mode
-			document.getElementById('darkModeToggle').checked = isDarkMode;
+		function initMode() {
+			if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+				document.documentElement.classList.add('dark');
+			} else {
+				document.documentElement.classList.remove('dark');
+			}
 		}
 
-		// On page load, apply the saved theme from localStorage and sync the toggle
-		window.onload = function() {
-			const theme = localStorage.getItem('theme');
-			const checkbox = document.getElementById('darkModeToggle');
-
-			if (theme === 'dark') {
-			document.documentElement.classList.add('dark');
-			checkbox.checked = true;  // Set the toggle to "checked" for dark mode
+		function toggleMode() {
+			if (document.documentElement.classList.contains('dark')) {
+				document.documentElement.classList.remove('dark');
+				localStorage.theme = 'light';
+				setActiveLink();
 			} else {
-			document.documentElement.classList.remove('dark');
-			checkbox.checked = false;  // Set the toggle to "unchecked" for light mode
+				document.documentElement.classList.add('dark');
+				localStorage.theme = 'dark';
+				setActiveLink();
 			}
-		};
+		}
 
 		document.addEventListener('DOMContentLoaded', function () {
 			const burgerMenu = document.getElementById('burger-menu');
@@ -68,7 +53,6 @@
 	<style>
 		body {
 			font-family: "Plus Jakarta Sans", sans-serif;
-			;
 		}
 	</style>
 </head>
@@ -78,7 +62,7 @@
 	<%- include('partials/header') %>
 
 		<main class="mb-24">
-			<section class="scroll-mt-56" id="beranda">
+			<section class="scroll-mt-56">
 				<div class="mb-24">
 					<div
 						class="relative flex justify-center items-center aspect-square md:aspect-[16/6] md:mt-24 dark:bg-[#1B1B21] bg-gradient-to-br from-white to bg-neutral-600 h-full z-10 overflow-hidden">
@@ -91,11 +75,11 @@
 								alt="Maskot Satria BIPA">
 						</div>
 						<div
-							class="flex w-full items-center md:mt-0 mt-12 leading-tight text-center justify-center flex-col gap-y-4 text-white z-20">
-							<h1 class="text-3xl md:text-7xl font-extrabold">Satria <span
-									class="text-red-500">BIPA</span></h1>
+							class="flex w-full items-center md:mt-0 mt-12 leading-tight text-center justify-center flex-col gap-y-4 z-20">
+							<h1 class="text-3xl md:text-7xl font-extrabold text-red-500">Satria <span
+									class="text-white">BIPA</span></h1>
 							<div class="flex justify-center md:text-xl flex-col font-semibold text-gray-300">
-								<span>Sahabat Tutur Berbahasa Indonesia</span>
+								<span class="font-extrabold text-red-500">Sahabat Tutur Berbahasa Indonesia</span>
 								<span>Bahasa Indonesia bagi Penutur Asing</span>
 							</div>
 						</div>
@@ -106,9 +90,9 @@
 				</div>
 			</section>
 
-			<section class="w-full relative flex flex-col space-y-16" id="fitur">
+			<section class="w-full relative flex flex-col space-y-16">
 				<div class="h-fit absolute top-0 w-screen -z-10 translate-y-24">
-					<svg class="inline-block fill-current w-full h-auto text-gray-200/40 dark:text-gray-400/40" viewBox="0 0 1440 450"
+					<svg class="inline-block fill-current w-full h-auto text-gray-200/40" viewBox="0 0 1440 450"
 						xmlns="http://www.w3.org/2000/svg">
 						<path
 							d="M1189.2 169.2H421H253.8C159.8 169.2 69.1 203.1 0 262.6V449.8C30.5 349.9 131.3 276.7 252 276.7H424.1H1187.4C1280.9 276.7 1371 243.2 1440 184.3V0C1408.1 97.9 1308.3 169.2 1189.2 169.2Z">
@@ -118,7 +102,7 @@
 
 				<div class="flex flex-col gap-y-8 max-w-7xl mx-auto">
 					<div class="flex flex-col md:flex-row w-full gap-x-24 p-8 md:p-4">
-						<div class="w-full md:w-1/2 rounded-[2.5rem] relative overflow-hidden border shadow-xl">
+						<div class="w-full md:w-1/2 rounded-[2.5rem] overflow-hidden border shadow-xl">
 							<img src="/images/fitur1.png" alt="" class="object-cover h-full w-full aspect-square">
 							<a href="#"
 								class=" absolute w-full h-full top-0 left-0 bg-white opacity-0 z-10 transition-opacity duration-300 hover:opacity-20 "></a>
@@ -127,7 +111,7 @@
 							<div class="flex flex-col pt-4 md:pt-0 gap-y-4 w-full items-start justify-center">
 								<div class="text-2xl md:text-5xl font-extrabold">Pembelajaran BIPA dengan Muatan Konten
 									Budaya</div>
-								<span class="text-base md:text-xl text-gray-400 dark:text-gray-300 font-semibold">Memberikan pembelajaran
+								<span class="text-base md:text-xl text-gray-400 font-semibold">Memberikan pembelajaran
 									bahasa Indonesia dengan konteks budaya sebagai wawasan dan informasi tentang
 									berbagai tradisi, adat istiadat, dan nilai-nilai budaya Indonesia.</span>
 							</div>
@@ -137,7 +121,7 @@
 
 				<div class="flex flex-col gap-y-8 max-w-7xl mx-auto">
 					<div class="flex flex-col md:flex-row-reverse w-full gap-x-24 p-8 md:p-4">
-						<div class="w-full md:w-1/2 rounded-[2.5rem] relative overflow-hidden border shadow-xl">
+						<div class="w-full md:w-1/2 rounded-[2.5rem] overflow-hidden border shadow-xl">
 							<img src="/images/fitur2.png" alt="" class="object-cover h-full w-full aspect-square">
 							<a href="#"
 								class=" absolute w-full h-full top-0 left-0 bg-white opacity-0 z-10 transition-opacity duration-300 hover:opacity-20 "></a>
@@ -145,7 +129,7 @@
 						<div class="w-full md:w-1/2 p-4 md:p-8 flex items-center justify-center">
 							<div class="flex flex-col pt-4 md:pt-0 gap-y-4 w-full items-start justify-center">
 								<div class="text-2xl md:text-5xl font-extrabold">Rekomendasi Materi Pembelajaran</div>
-								<span class="text-base md:text-xl text-gray-400 dark:text-gray-300 font-semibold">Menyarankan materi
+								<span class="text-base md:text-xl text-gray-400 font-semibold">Menyarankan materi
 									pembelajaran bahasa Indonesia yang terkait dengan pertanyaan pengguna, penyesuaian
 									tingkat kesulitan, dan kiat-kiat belajar bahasa Indonesia.</span>
 							</div>
@@ -155,7 +139,7 @@
 
 				<div class="flex flex-col gap-y-8 max-w-7xl mx-auto">
 					<div class="flex flex-col md:flex-row w-full gap-x-24 p-8 md:p-4">
-						<div class="w-full md:w-1/2 rounded-[2.5rem] relative overflow-hidden border shadow-xl">
+						<div class="w-full md:w-1/2 rounded-[2.5rem] overflow-hidden border shadow-xl">
 							<img src="/images/fitur3.png" alt="" class="object-cover h-full w-full aspect-square">
 							<a href="#"
 								class=" absolute w-full h-full top-0 left-0 bg-white opacity-0 z-10 transition-opacity duration-300 hover:opacity-20 "></a>
@@ -163,7 +147,7 @@
 						<div class="w-full md:w-1/2 p-4 md:p-8 flex items-center justify-center">
 							<div class="flex flex-col pt-4 md:pt-0 gap-y-4 w-full items-start justify-center">
 								<div class="text-2xl md:text-5xl font-extrabold">Percakapan Bahasa Indonesia</div>
-								<span class="text-base md:text-xl text-gray-400 dark:text-gray-300 font-semibold">Latihan berbicara melalui
+								<span class="text-base md:text-xl text-gray-400 font-semibold">Latihan berbicara melalui
 									teks berbentuk percakapan alami dalam Bahasa Indonesia untuk meningkatkan
 									kepercayaan diri dan kelancaran berbicara dalam berbahasa Indonesia.</span>
 							</div>
@@ -173,7 +157,7 @@
 
 				<div class=" h-96 w-96 absolute right-36 -bottom-16 -z-10">
 
-					<div class="h-56 w-56 text-red-100 dark:text-red-900 absolute -z-10 left-20 top-20">
+					<div class="h-56 w-56 text-red-100 absolute -z-10 left-20 top-20">
 						<svg id='patternId' width='100%' height='100%' xmlns='http://www.w3.org/2000/svg'>
 							<defs>
 								<pattern id='a' patternUnits='userSpaceOnUse' width='40' height='40'
@@ -206,16 +190,13 @@
 
 
 
-			<section class="flex w-full max-w-7xl mx-auto bg-neutral-800 mt-12 md:rounded-xl shadow-md md:p-8" id="panduan">
+			<section class="flex w-full max-w-7xl mx-auto bg-neutral-800 mt-12 md:rounded-xl shadow-md md:p-8">
 				<div class="w-full flex items-center justify-center flex-col-reverse md:flex-row gap-x-24">
 					<div class="w-full md:w-1/2 p-8 pt-0">
 						<div class="flex flex-col gap-y-4 w-full items-start justify-center px-4 md:px-0">
 							<div class="text-xl md:text-4xl font-extrabold text-white">Pelajari lebih lanjut</div>
-							<div class="text-sm md:text-xl text-neutral-100 font-semibold">Tonton video panduan berikut
-								untuk menggunakan Satria BIPA</div>
-                                <a href="/login" class="flex flex-col items-center justify-center gap-y-8 py-4 rounded-xl w-full">
-                                    <button onclick="location.href='/login'" class="px-4 py-3 rounded-xl bg-red-600 text-white flex w-full gap-x-2 items-center justify-center group">Mulai <span class="group-hover:translate-x-2 transition-all duration-300 ease-in-out">→</span></button>
-                                </a>
+							<div class="text-sm md:text-xl text-neutral-100 font-semibold">Silakan tonton video tutorial Chatbot Satria BIPA berikut
+							</div>
 						</div>
 					</div>
 					<div class="w-full md:w-1/2 p-8 flex items-center justify-end">
