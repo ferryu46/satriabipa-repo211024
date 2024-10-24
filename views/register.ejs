@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Akun - Satria BIPA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@200..800&display=swap" rel="stylesheet"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+
+    <script>
+      // Tailwind configuration to enable dark mode class
+      tailwind.config = {
+        darkMode: "class",
+      };
+
+      // Initialize dark mode based on user preference or system setting
+      function initMode() {
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      }
+
+      // Toggle dark mode
+      function toggleMode() {
+        if (document.documentElement.classList.contains('dark')) {
+          document.documentElement.classList.remove('dark');
+          localStorage.theme = 'light';
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.theme = 'dark';
+        }
+      }
+
+      // Initialize dark mode on page load
+      document.addEventListener('DOMContentLoaded', function () {
+        initMode();
+
+        // Burger menu toggle for mobile view
+        const burgerMenu = document.getElementById('burger-menu');
+        const navLinks = document.getElementById('navbar-default');
+        
+        if (burgerMenu) {
+          burgerMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('hidden');
+          });
+        }
+      });
+    </script>
+
+    <style>
+      body {
+        font-family: "Plus Jakarta Sans", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-white dark:bg-gray-800 dark:text-white flex items-center justify-center min-h-screen">
+    <!-- Include header here with dark mode toggle -->
+    <%- include('partials/header') %>
+
+    <main class="flex items-center justify-center w-full h-600 p-0 border-gray dark:border-gray-700 mt-16">
+        <div class="flex-1 flex items-center justify-center p-8">
+          <form class="w-full max-w-sm">
+            <h1 class="text-2xl font-bold text-center mb-6 dark:text-white">Daftar Akun</h1>
+            <div class="mb-4">
+              <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="username">Nama Pengguna</label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Nama Pengguna">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="email">Post-el(Email)</label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="register-email" type="email" placeholder="Email">
+            </div>
+            <div class="mb-4">
+              <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="country">Asal Negara</label>
+              <select id="country" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                <option value="" disabled selected>Pilih Negara</option>
+              </select>
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="password">Sandi</label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="register-password" type="password" placeholder="********">
+            </div>
+            <div class="mb-6">
+              <label class="block text-gray-700 dark:text-gray-300 text-sm font-bold mb-2" for="confirm-password">Konfirmasi Sandi</label>
+              <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-gray-200 dark:bg-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="confirm-password" type="password" placeholder="********">
+            </div>
+            <div class="text-center">
+              <a href="/login" class="text-blue-500 dark:text-blue-300 hover:text-blue-700 dark:hover:text-blue-500 text-sm">Sudah punya akun? Masuk disini</a>
+            </div>
+          </form>
+      </div>
+    </main> 
+        <!-- Gambar yang berada di depan gradient -->
+        <img 
+        src="/images/Gatot Kaca.png" 
+        class="h-auto w-36 md:w-96 absolute -bottom-24 right-0" 
+        alt="Maskot Satria BIPA">
+  
+  </body>
+</html>
