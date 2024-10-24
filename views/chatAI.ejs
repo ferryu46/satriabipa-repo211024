@@ -149,7 +149,7 @@
 
 			/* Minimized sidebar */
 			#default-sidebar.minimized {
-				width: 80px;
+				display: none;
 				/* Narrow sidebar when minimized */
 			}
 
@@ -212,9 +212,9 @@
 		</button>
 		<!-- Sidebar -->
 		<aside id="default-sidebar"
-			class="bg-gray-200 hidden pt-24 dark:bg-gray-800 h-screen top-0 left-0 z-40 overflow-y-auto scrollbar-custom md:flex flex-col space-y-3 transition-all duration-300 translate-x-0 px-3">
+			class="bg-gray-200 hidden minimized pt-24 dark:bg-gray-800 h-screen top-0 left-0 z-40 overflow-y-auto scrollbar-custom md:flex flex-col space-y-3 transition-all duration-300 translate-x-0 px-3">
 			<!-- Tombol untuk menutup sidebar pada layar kecil -->
-			<div class="flex flex-col flex-1 space-y-6">
+			<div class="flex w-full flex-col flex-1 space-y-6">
 
 				<!-- Konten Sidebar -->
 				<button id="new-chat-btn" class="flex w-fit bg-white/10 px-3 py-2 rounded-xl">
@@ -228,7 +228,7 @@
 					</div>
 					<span class="ml-2 sidebar-text">Mulai Percakapan Baru</span>
 				</button>
-				<div class="sidebar-content-wrapper">
+				<div class="sidebar-content-wrapper minimized">
 					<!-- Daftar Riwayat Chat -->
 					<section id="chat-history-list" class="scrollbar-custom">
 						<div>
@@ -253,9 +253,9 @@
 			</div>
 
 			<!-- Pengaturan dan Toggle Dark Mode -->
-			<section class="w-full sticky bottom-0 dark:bg-gray-800 bg-neutral-200">
+			<section class="w-full sticky bottom-5 dark:bg-gray-800 bg-neutral-200">
 				<!-- Konten pengaturan tetap sama -->
-				<div id="default-sidebar-setting-content" class="flex flex-col">
+				<div id="default-sidebar-setting-content" class="flex minimized flex-col">
 					<a href="#" class="flex items-center hover:bg-white/10 p-3 rounded-md icon">
 						<!-- Icon Bantuan dan Teks -->
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -294,10 +294,25 @@
 					<a class="flex items-center hover:bg-white/10 p-3 rounded-md icon">
 						<!-- Toggle Dark Mode -->
 						<div class="flex items-center">
-								<span id="icon-light" onclick="toggleMode()" class="hover:cursor-pointer text-black dark:text-white">
+								<!-- <span id="icon-light" onclick="toggleMode()" class="hover:cursor-pointer text-black dark:text-white"> -->
 									<!-- Light theme icon SVG -->
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-								</span>
+									<!-- <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+								</span> -->
+								<!-- Light theme icon SVG -->
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+									fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" class="lucide lucide-sun">
+									<circle cx="12" cy="12" r="4" />
+									<path d="M12 2v2" />
+									<path d="M12 20v2" />
+									<path d="m4.93 4.93 1.41 1.41" />
+									<path d="m17.66 17.66 1.41 1.41" />
+									<path d="M2 12h2" />
+									<path d="M20 12h2" />
+									<path d="m6.34 17.66-1.41 1.41" />
+									<path d="m19.07 4.93-1.41 1.41" />
+								</svg>
+							</span>
 						</div>
 					</a>
 				</div>
@@ -336,13 +351,11 @@
 						</svg>
 					</div>
 
-					<div class="flex justify-center items-center">
-						<label class="flex items-center">
-							<input type="checkbox" value="" class="sr-only peer" onclick="toggleMode()">
-							<div
-								class="relative mx-3 w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-['🌞'] dark:after:content-['🌜'] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
-							</div>
-						</label>
+					<div class="flex justify-center items-center text-white dark:text-black">
+						<span id="icon-light" id="theme-toggle-btn" class="hover:cursor-pointer" onclick="toggleMode()">
+						<!-- Light theme icon SVG -->
+						<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+					</span>
 					</div>
 
 				</div>
@@ -630,7 +643,7 @@
 
 					// Render the user's message
 					const userMessageDiv = document.createElement('div');
-					userMessageDiv.classList.add('bg-[#ffcc00]', 'text-black', 'self-end', 'text-justify', 'leading-relaxed', 'max-w-xl', 'p-4', 'rounded-md', 'w-fit', 'shadow-lg', 'mb-3');
+					userMessageDiv.classList.add('bg-gray-100', 'text-black', 'self-end', 'text-justify', 'leading-relaxed', 'max-w-xl', 'p-4', 'rounded-md', 'w-fit', 'shadow-xl', 'mb-3', 'border-[#2b2b2b]', 'border');
 					userMessageDiv.textContent = messageText;
 					chatBox.appendChild(userMessageDiv);
 
@@ -674,7 +687,7 @@
 
 						// Render the bot's message
 						const botMessageDiv = document.createElement('div');
-						botMessageDiv.classList.add('bg-[#2b2b2b]', 'text-[#e0e0e0]', 'self-start', 'text-justify', 'leading-relaxed', 'max-w-xl', 'p-4', 'rounded-md', 'w-fit', 'shadow-lg', 'mb-3');
+						botMessageDiv.classList.add('bg-[#2b2b2b]', 'text-[#e0e0e0]', 'self-start', 'text-justify', 'leading-relaxed', 'max-w-xl', 'p-4', 'rounded-md', 'w-fit', 'shadow-xl', 'mb-3');
 						botMessageDiv.textContent = botResponse;
 						chatBox.appendChild(botMessageDiv);
 
