@@ -98,7 +98,7 @@
                             </label>
                         </div> -->
                         <!-- Button Mengarah ke Login -->
-                        <Buttto onclick="location.href='/login'" class="hover:cursor-pointer px-4 py-2 hidden md:flex text-white bg-neutral-700 rounded hover:bg-neutral-800 focus:ring-4 focus:outline-none focus:ring-neutral-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Coba Sekarang</Buttton>
+                        <button onclick="location.href='/login'" class="hover:cursor-pointer px-4 py-2 hidden md:flex text-white bg-neutral-700 rounded hover:bg-neutral-800 focus:ring-4 focus:outline-none focus:ring-neutral-300 dark:bg-gray-600 dark:hover:bg-gray-700 dark:focus:ring-gray-800">Coba Sekarang</button>
                         </div>
                         <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex z-50 items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
                             <span class="sr-only">Open main menu</span>
@@ -107,7 +107,7 @@
                             </svg>
                         </button>
                 </div>
-                <div class="items-start justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
+                <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1 gap-x-4" id="navbar-sticky">
                     <ul class="flex flex-col p-4 md:p-0 mt-4 md:pr-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-14 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
                         <li>
                             <a href="/index#beranda" class="flex w-full items-center justify-start py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-8 hover:duration-75">Beranda</a>
@@ -119,7 +119,7 @@
                             <a href="/index#panduan" class="flex w-full items-center justify-start py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent hover:underline hover:underline-offset-8 hover:duration-75">Panduan</a>
                         </li>
                     </ul>
-                    <div class="flex flex-row gap-x-4 pt-4 md:pt-0 h-full w-full items-center justify-between md:justify-center">
+                    <div class="flex md:flex-row-reverse flex-row gap-x-4 pt-4 md:pt-0 h-full w-full items-center justify-between md:justify-center">
                         <!-- <div class="flex items-center">
                             <label class="flex items-center">
                                 <input type="checkbox" value="" id="darkModeToggle" class="sr-only peer" onclick="toggleMode()">
@@ -127,15 +127,11 @@
                             </label>
                         </div> -->
                         <!-- <button onclick="toggleMode()" class="hover:cursor-pointer"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg></button> -->
-                        <Buttton onclick="location.href='/login'" class="hover:cursor-pointer px-4 py-2 text-white bg-neutral-700 rounded hover:bg-neutral-800 focus:ring-4 focus:outline-none focus:ring-neutral-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Coba Sekarang</Buttton>
-                        <button id="theme-toggle-btn" onclick="toggleMode()" class="hover:cursor-pointer p-2 rounded-xl dark:bg-gray-800 dark:hover:bg-gray-700 bg-gray-100 hover:bg-gray-200">
-                            <span id="icon-light">
+                        <button onclick="location.href='/login'" class="hover:cursor-pointer px-4 py-2 text-white bg-neutral-700 rounded hover:bg-neutral-800 focus:ring-4 focus:outline-none focus:ring-neutral-300 hover:text-white dark:bg-white dark:hover:bg-white/80 dark:focus:ring-white dark:text-black font-semibold">Coba Sekarang</button>
+                        <button id="theme-toggle-btn" onclick="toggleMode()" class="hover:cursor-pointer p-2 rounded-xl dark:bg-neutral-800 dark:hover:bg-gray-700 bg-gray-100 hover:bg-gray-200">
+                            <span id="icon-light" class="text-black dark:text-white">
                                 <!-- Light theme icon SVG -->
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-                            </span>
-                            <span id="icon-dark">
-                                <!-- Dark theme icon SVG -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
                             </span>
                         </button>
                     </div>
