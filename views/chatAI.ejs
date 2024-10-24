@@ -149,7 +149,7 @@
 
 			/* Minimized sidebar */
 			#default-sidebar.minimized {
-				width: 80px;
+				display: none;
 				/* Narrow sidebar when minimized */
 			}
 
@@ -212,7 +212,7 @@
 		</button>
 		<!-- Sidebar -->
 		<aside id="default-sidebar"
-			class="bg-gray-200 hidden pt-24 dark:bg-gray-800 h-screen top-0 left-0 z-40 overflow-y-auto scrollbar-custom md:flex flex-col space-y-3 transition-all duration-300 translate-x-0 px-3">
+			class="bg-gray-200 hidden minimized pt-24 dark:bg-gray-800 h-screen top-0 left-0 z-40 overflow-y-auto scrollbar-custom md:flex flex-col space-y-3 transition-all duration-300 translate-x-0 px-3">
 			<!-- Tombol untuk menutup sidebar pada layar kecil -->
 			<div class="flex flex-col flex-1 space-y-6">
 
@@ -228,7 +228,7 @@
 					</div>
 					<span class="ml-2 sidebar-text">Mulai Percakapan Baru</span>
 				</button>
-				<div class="sidebar-content-wrapper">
+				<div class="sidebar-content-wrapper minimized">
 					<!-- Daftar Riwayat Chat -->
 					<section id="chat-history-list" class="scrollbar-custom">
 						<div>
@@ -255,7 +255,7 @@
 			<!-- Pengaturan dan Toggle Dark Mode -->
 			<section class="w-full sticky bottom-0 dark:bg-gray-800 bg-neutral-200">
 				<!-- Konten pengaturan tetap sama -->
-				<div id="default-sidebar-setting-content" class="flex flex-col">
+				<div id="default-sidebar-setting-content" class="minimized flex flex-col">
 					<a href="#" class="flex items-center hover:bg-white/10 p-3 rounded-md icon">
 						<!-- Icon Bantuan dan Teks -->
 						<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
@@ -294,10 +294,23 @@
 					<a class="flex items-center hover:bg-white/10 p-3 rounded-md icon">
 						<!-- Toggle Dark Mode -->
 						<div class="flex items-center">
-								<span id="icon-light" onclick="toggleMode()" class="hover:cursor-pointer text-black dark:text-white">
-									<!-- Light theme icon SVG -->
-									<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
-								</span>
+							<span id="icon-light" onclick="toggleMode()"
+								class="hover:cursor-pointer text-black dark:text-white">
+								<!-- Light theme icon SVG -->
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+									fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+									stroke-linejoin="round" class="lucide lucide-sun">
+									<circle cx="12" cy="12" r="4" />
+									<path d="M12 2v2" />
+									<path d="M12 20v2" />
+									<path d="m4.93 4.93 1.41 1.41" />
+									<path d="m17.66 17.66 1.41 1.41" />
+									<path d="M2 12h2" />
+									<path d="M20 12h2" />
+									<path d="m6.34 17.66-1.41 1.41" />
+									<path d="m19.07 4.93-1.41 1.41" />
+								</svg>
+							</span>
 						</div>
 					</a>
 				</div>
